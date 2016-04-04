@@ -9,3 +9,6 @@ https://github.com/Conorford1991/Projects/blob/master/MonteCarlo.cpp
 
 - Speed / Distance / Time calculation (C++)
 https://github.com/Conorford1991/Projects/blob/master/SpeedDistanceTimecpp
+
+- Determines if a number is prime (C++)
+https://github.com/Conorford1991/Projects/blob/master/Prime.cpp
