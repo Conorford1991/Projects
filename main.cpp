@@ -1,3 +1,4 @@
+// Author: Conor Ford
 #include <iostream>
 #include <cstdlib>
 #include <ctime> // access computer clock
