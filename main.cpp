@@ -6,47 +6,10 @@
 
 using namespace std;
 
-int sum(int a, int b){
-   return a+b; 
-}
-
-int sumArray(int array[], int max){
-    int sum=0;
-    for(int i=0; i<max; i++){
-        sum+=array[i];
-    }
-    return sum;
-}
-
-int printArray(const int array[], const int max){
-    for(int i=0; i<max; i++){
-        cout<<array[i];
-        if(i<max-1){
-            cout<<",";
-        }
-    }
-}
-
-void Pointer(){
-    int num=10;
-    int* Ptr = &num; // allocates  memory address to pointer
-    
-    cout<<"Address of pointer: "<<Ptr<<endl;
-    cout<<"Data at memory address: "<<*Ptr<<endl; //deallocates memory address
-    
-}
-
-int swap(int &x, int &y){
-    int temp;
-    temp=x;
-    x=y;
-    y=temp;
-}
-
 double MonteCarlo(int n){
     
     int DartsInCircle;
-    srand(time(0)); // truly random numbers  by changing random alogorithm
+    srand(time(0)); // truely random numbers by changing random alogorithm
     
     clock_t start;
     double duration;
@@ -72,20 +35,7 @@ double MonteCarlo(int n){
 }
 
 int main(){
-    //cout<<sum(2,2);
-    
-    //int testArray[]{1,2,3,4};
-    //sumArray(testArray,5);
-    //printArray(testArray,5);
-    
-    //Pointer();
     
     cout<<MonteCarlo(5000000)<<endl;
-    
-    
-
-    
-    
-    
     return 0;
 }
