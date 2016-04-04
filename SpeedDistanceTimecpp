@@ -1,3 +1,4 @@
+// Author: Conor Ford
 #include <iostream>//allows use of the std::cout object
 using namespace std;
 
