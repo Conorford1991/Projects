@@ -1,4 +1,5 @@
 //Exponential Inflation
+// Author: Conor Ford
 
 #include <iostream>
 
