@@ -15,3 +15,6 @@ https://github.com/Conorford1991/Projects/blob/master/Prime.cpp
 
 - Zombie Dice (Functional take on the popular Zombie Dice board game in Java ) *** In progress
 https://github.com/Conorford1991/Projects/blob/master/ZombieDice.java
+
+- Loan Calculator (Java)
+https://github.com/Conorford1991/Projects/blob/master/LoanCalculator.java
