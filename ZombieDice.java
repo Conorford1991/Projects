@@ -301,7 +301,7 @@ class ZombieDice{
 							System.out.print("Exited game");
 								break;
 						}
-                      }
+                              }
 						
 	                }
 	
