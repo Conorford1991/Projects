@@ -1,4 +1,4 @@
-package Ford_Conor_2856181;
+// Author: Conor Ford
 /**
  * This Program allows the user to calculate mortgage and car payments. The user is asked to enter 
  * and amount and a duration for the loan. A total (including interest) is generated and payments 
@@ -217,12 +217,7 @@ public class LoanCalculator extends Application {
                 
 	
         }
-	//Method to set the Slider based on the Loan Type
-	private void setSlider(){
-		
-		
-	}
-
+	
 	//Method to set the rate based on the Loan Type and the Interest Rate Type
 	private void setRate(){
                 
