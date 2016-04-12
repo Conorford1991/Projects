@@ -2,7 +2,7 @@
 #include <iostream>//allows use of the std::cout object
 using namespace std;
 
-int Distance(double t, double speed){
+double Distance(double t, double speed){
 	
 	double Discal=t*speed;
 	cout<<"Distance calculated: "<<Discal<<" km"<<endl;
@@ -10,7 +10,7 @@ int Distance(double t, double speed){
 	return Discal; 
 }
 
-int Time(double distance, double speed){
+double Time(double distance, double speed){
 	
 	double Timecal=distance/speed*60;
 	cout<<"Time calculated: "<<Timecal<<" mins"<<endl;
@@ -18,7 +18,7 @@ int Time(double distance, double speed){
 	return Timecal;
 }
 
-int Speed(double distance, double t){
+double Speed(double distance, double t){
 	
 	double Speedcal=distance/t;
 	cout<<"Speed calculated: "<<Speedcal<<" kmph"<<endl;
