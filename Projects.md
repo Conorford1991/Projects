@@ -4,7 +4,7 @@ Project repository
 - Recursive and Iterative solutions to compute the nth Fibonacci number (Java)
 https://github.com/Conorford1991/Projects/blob/master/Fib.java
 
-- Monte Carlo simulation to determine Pi (C++)
+- Monte Carlo simulation to determine Pi & length of time to calculate (C++)
 https://github.com/Conorford1991/Projects/blob/master/MonteCarlo.cpp
 
 - Speed / Distance / Time calculation (C++)
