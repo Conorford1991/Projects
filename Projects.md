@@ -18,3 +18,6 @@ https://github.com/Conorford1991/Projects/blob/master/ZombieDice.java
 
 - Loan Calculator (Java) (This Program allows the user to calculate mortgage and car payments. The user is asked to enter and amount and a duration for the loan. A total (including interest) is generated and payments are calculated on a weekly, monthly or yearly basis. There is error checking to ensure that suitable values are entered)
 https://github.com/Conorford1991/Projects/blob/master/LoanCalculator.java
+
+- Patient scheduler for a doctor. Each patient is assigned a time slot and their details are recorded (Java) *** In progress
+https://github.com/Conorford1991/Projects/blob/master/Scheduler.java
