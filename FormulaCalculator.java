@@ -14,7 +14,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+// Reset Resetobject = new Reset(); // object of ShannonNyquist class
+                   //Resetobject.reset(); // method call
 /**
  *
  * @author Conor
@@ -37,6 +38,15 @@ public class FormulaCalculator extends Application {
     private TextField SignalNoiseRatioTf;
     private TextField SignalingLevelsTf;
     private TextField CapacityResultTf;
+    private TextField ArrivalRateTf;
+    private TextField ServiceRateTf;   
+    private TextField MinsBetweenArrivalsTf;
+    private TextField ServiceTimeTf;   
+    private TextField ServerUtilizationTf;
+    private TextField NumberOfCustomersLineTf;
+    private TextField NumberOfCustomersSystemTf;    
+    private TextField WaitInLineMinsTf;
+    private TextField TimeInSystemTf;
     // Buttons
     private Button distanceBtn;
     private Button timeBtn;
@@ -44,6 +54,8 @@ public class FormulaCalculator extends Application {
     private Button clearBtn;
     private Button resetBtn;
     private Button capacityBtn;
+    private Button QueuingBtn;
+    private Button QueuingCalBtn;
     // Label
     private Label Speedlabel;
     private Label Timelabel;
@@ -55,6 +67,15 @@ public class FormulaCalculator extends Application {
     private Label BandwidthLabel;
     private Label SignalNoiseRatioLabel;
     private Label SignalingLevelsLabel;
+    private Label ArrivalRateLabel;
+    private Label ServiceRateLabel;
+    private Label MinsBetweenArrivalsLabel;
+    private Label ServiceTimeLabel;
+    private Label ServerUtilizationLabel;
+    private Label NumberOfCustomersLineLabel;
+    private Label NumberOfCustomersSystemLabel;
+    private Label WaitInLineMinsLabel;
+    private Label TimeInSystemLabel;
     
     
     @Override
@@ -64,7 +85,7 @@ public class FormulaCalculator extends Application {
         vbox = new VBox();
         
         
-        Scene scene = new Scene(gp, 700,600);
+        Scene scene = new Scene(gp, 800,700);
         //gp.getChildren().addAll(vbox);
         gp.add(vbox, 0,0);
         vbox.setSpacing(10);
@@ -77,10 +98,12 @@ public class FormulaCalculator extends Application {
         Reset();
         DistanceTimeSpeed();
         ShannonNyquist();
+        Queuing();
     }
     
     public static void main(String[] args) {
         launch(args);
+        
     }
     // Distance, time, speed calculation
     public void DistanceTimeSpeed(){
@@ -122,6 +145,7 @@ public class FormulaCalculator extends Application {
            public void handle(ActionEvent event){
            // removes capacity combobox
            vbox.getChildren().remove(capacitycombobox);
+           vbox.getChildren().remove(QueuingCalBtn);
            
            combobox.getValue();
                if(combobox.getValue()=="Distance"){
@@ -323,6 +347,7 @@ public class FormulaCalculator extends Application {
            public void handle(ActionEvent event){
            // removes combobox
            vbox.getChildren().remove(combobox);
+           vbox.getChildren().remove(QueuingCalBtn);
            
            capacitycombobox.getValue();
                if(capacitycombobox.getValue()=="Shannon (uses S/N ratio)"){
@@ -450,6 +475,192 @@ public class FormulaCalculator extends Application {
         
         clear();
     }
+    public void Queuing(){
+        QueuingCalBtn = new Button("Single-Server Queue calculation");
+        
+        // inputs
+        ArrivalRateLabel = new Label("Customers arriving per hour");
+        ServiceRateLabel = new Label("Customers being served per hour");
+        
+        // outputs
+        MinsBetweenArrivalsLabel = new Label("Average time between arrivals (mins)");
+        ServiceTimeLabel = new Label("Average service time (mins)");
+        ServerUtilizationLabel = new Label("Average server utilization (people)");
+        NumberOfCustomersLineLabel = new Label("Average customers in line (people)");
+        NumberOfCustomersSystemLabel = new Label("Average customers in system (people)");
+        WaitInLineMinsLabel = new Label("Average time in line (mins)");
+        TimeInSystemLabel = new Label("Average time in system (mins)");
+     
+        
+        QueuingBtn = new Button("Calculate Queue");
+        
+        ArrivalRateTf = new TextField();
+        ArrivalRateTf.setEditable(true);
+        
+        ServiceRateTf = new TextField();
+        ServiceRateTf.setEditable(true);
+        
+        MinsBetweenArrivalsTf = new TextField();
+        MinsBetweenArrivalsTf.setEditable(false);
+        
+        ServiceTimeTf = new TextField();
+        ServiceTimeTf.setEditable(false);
+        
+        ServerUtilizationTf = new TextField();
+        ServerUtilizationTf.setEditable(false);
+        
+        NumberOfCustomersLineTf = new TextField();
+        NumberOfCustomersLineTf.setEditable(false);
+        
+        NumberOfCustomersSystemTf = new TextField();
+        NumberOfCustomersSystemTf.setEditable(false);
+        
+        WaitInLineMinsTf = new TextField();
+        WaitInLineMinsTf.setEditable(false);
+        
+        TimeInSystemTf = new TextField();
+        TimeInSystemTf.setEditable(false);
+        
+        
+        vbox.getChildren().addAll(QueuingCalBtn);
+        
+        QueuingCalBtn.setOnAction(new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event){
+           // removes combobox
+           vbox.getChildren().remove(combobox);
+           vbox.getChildren().remove(capacitycombobox);
+                    QueuingReset();
+                    
+                    vbox.getChildren().addAll(QueuingBtn);
+                    
+                    vbox.getChildren().addAll(ArrivalRateLabel);
+                    vbox.getChildren().addAll(ArrivalRateTf);
+                    
+                    vbox.getChildren().addAll(ServiceRateLabel);
+                    vbox.getChildren().addAll(ServiceRateTf);
+                    
+                    vbox.getChildren().addAll(MinsBetweenArrivalsLabel);
+                    vbox.getChildren().addAll(MinsBetweenArrivalsTf);
+                    
+                    vbox.getChildren().addAll(ServiceTimeLabel);
+                    vbox.getChildren().addAll(ServiceTimeTf);
+                    
+                    vbox.getChildren().addAll(ServerUtilizationLabel);
+                    vbox.getChildren().addAll(ServerUtilizationTf);
+                    
+                    
+                    vbox.getChildren().addAll(NumberOfCustomersLineLabel);
+                    vbox.getChildren().addAll(NumberOfCustomersLineTf);
+                    
+                    vbox.getChildren().addAll(NumberOfCustomersSystemLabel);
+                    vbox.getChildren().addAll(NumberOfCustomersSystemTf);
+                    
+                    vbox.getChildren().addAll(WaitInLineMinsLabel);
+                    vbox.getChildren().addAll(WaitInLineMinsTf);
+                    
+                    vbox.getChildren().addAll(TimeInSystemLabel);
+                    vbox.getChildren().addAll(TimeInSystemTf);
+       
+
+                    QueuingBtn.setOnAction(new EventHandler<ActionEvent>(){
+                    @Override 
+                    public void handle(ActionEvent e) {
+                      
+                      if(ArrivalRateTf.getText() == null || ArrivalRateTf.getText().trim().isEmpty()){
+                          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                          alert.setTitle("No value");
+                          alert.setHeaderText(null);
+                          alert.setContentText("Please enter a suitable arrival rate value");
+                          alert.showAndWait();
+                      }
+                      if(ServiceRateTf.getText() == null || ServiceRateTf.getText().trim().isEmpty()){
+                          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                          alert.setTitle("No value");
+                          alert.setHeaderText(null);
+                          alert.setContentText("Please enter a suitable service rate value");
+                          alert.showAndWait();
+                      }
+                      // Single-Server Queue Algorithm
+                      else if(ArrivalRateTf.getText() != null || ServiceRateTf.getText() != null){
+                         // Arrival rate
+                         double ArrivalRate = Double.parseDouble( ArrivalRateTf.getText()); 
+                         double ArrivalRateMins = (60/ArrivalRate);
+                                 ArrivalRateMins = (double) Math.round(ArrivalRateMins * 100) / 100;// rounds to 2 decimal places
+                                 MinsBetweenArrivalsTf.setText(Double.toString(ArrivalRateMins)+(" mins")); 
+                          
+                         // Service Rate
+                         double ServiceRate = Double.parseDouble( ServiceRateTf.getText()); 
+                         double ServiceRateMins = 60/ServiceRate;
+                                 ServiceRateMins = (double) Math.round(ServiceRateMins * 100) / 100;// rounds to 2 decimal places
+                                 ServiceTimeTf.setText(Double.toString(ServiceRateMins)+(" mins"));
+                                 
+                         // Average server utilization
+                         double ServerUtilization = ArrivalRate / ServiceRate;
+                                ServerUtilization = (double) Math.round(ServerUtilization * 100) / 100;// rounds to 2 decimal places
+                                ServerUtilizationTf.setText(Double.toString(ServerUtilization)+(" people"));
+                                
+                         // Average number of customers in line
+                         double CustomersInLine = (Math.pow(ArrivalRate, 2)/(ServiceRate * (ServiceRate - ArrivalRate)));
+                                CustomersInLine = (double) Math.round(CustomersInLine * 100) / 100;// rounds to 2 decimal places
+                                NumberOfCustomersLineTf.setText(Double.toString(CustomersInLine)+(" people"));
+                                        
+                         // Average number of customers in system
+                         double CustomersInSystem = (ArrivalRate/(ServiceRate - ArrivalRate));
+                                CustomersInSystem = (double) Math.round(CustomersInSystem * 100) / 100;// rounds to 2 decimal places
+                                NumberOfCustomersSystemTf.setText(Double.toString(CustomersInSystem)+(" people"));
+                         
+                         // Average wait in line
+                         double WaitInLine = ((ArrivalRate / (ServiceRate * (ServiceRate - ArrivalRate)))* 60);
+                               WaitInLine = (double) Math.round(WaitInLine * 100) / 100;// rounds to 2 decimal places
+                               WaitInLineMinsTf.setText(Double.toString(WaitInLine)+(" mins"));
+                               
+                         // Average time in system
+                         double TimeInSystem = (1 / (ServiceRate - ArrivalRate)*60);
+                                TimeInSystem = (double) Math.round(TimeInSystem * 100) / 100;// rounds to 2 decimal places
+                                TimeInSystemTf.setText(Double.toString(TimeInSystem)+(" mins"));
+                      }
+                    }
+                  });
+               }
+            });
+        }
+    public void QueuingReset(){
+                    vbox.getChildren().removeAll(QueuingBtn);
+                    vbox.getChildren().removeAll(ArrivalRateLabel);
+                    vbox.getChildren().removeAll(ArrivalRateTf);
+                    
+                    vbox.getChildren().removeAll(ServiceRateLabel);
+                    vbox.getChildren().removeAll(ServiceRateTf);
+                    
+                    vbox.getChildren().removeAll(MinsBetweenArrivalsLabel);
+                    vbox.getChildren().removeAll(MinsBetweenArrivalsTf);
+                    
+                    vbox.getChildren().removeAll(ServiceTimeLabel);
+                    vbox.getChildren().removeAll(ServiceTimeTf);
+                    
+                    vbox.getChildren().removeAll(ServerUtilizationLabel);
+                    vbox.getChildren().removeAll(ServerUtilizationTf);
+                    
+                    
+                    vbox.getChildren().removeAll(NumberOfCustomersLineLabel);
+                    vbox.getChildren().removeAll(NumberOfCustomersLineTf);
+                    
+                    vbox.getChildren().removeAll(NumberOfCustomersSystemLabel);
+                    vbox.getChildren().removeAll(NumberOfCustomersSystemTf);
+                    
+                    vbox.getChildren().removeAll(WaitInLineMinsLabel);
+                    vbox.getChildren().removeAll(WaitInLineMinsTf);
+                    
+                    vbox.getChildren().removeAll(TimeInSystemLabel);
+                    vbox.getChildren().removeAll(TimeInSystemTf);
+                    
+                    vbox.getChildren().removeAll(clearBtn);
+                    
+                    clear();
+       
+    }
+        
     // Clear method
     public void clear(){
         clearBtn = new Button("Clear");
@@ -466,14 +677,27 @@ public class FormulaCalculator extends Application {
                    timeResultTf.clear();
                    distanceResultTf.clear();
                    
+                   // Capacity
                    SignalNoiseRatioTf.clear();
                    BandwidthTf.clear();
                    SignalingLevelsTf.clear();
                    CapacityResultTf.clear();
+                   
+                   // Queuing
+                   ArrivalRateTf.clear();
+                   ServiceRateTf.clear();
+                   MinsBetweenArrivalsTf.clear();
+                   ServiceTimeTf.clear();
+                   ServerUtilizationTf.clear();
+                   NumberOfCustomersLineTf.clear();
+                   NumberOfCustomersSystemTf.clear();
+                   WaitInLineMinsTf.clear();
+                   TimeInSystemTf.clear();
             }         
            });
     }
     // Reset method
+   
     public void Reset(){
         resetBtn = new Button("Reset");
         vbox.getChildren().addAll(resetBtn);
@@ -483,11 +707,14 @@ public class FormulaCalculator extends Application {
             public void handle(ActionEvent e) {
                    vbox.getChildren().remove(combobox);
                    vbox.getChildren().remove(capacitycombobox);
+                   vbox.getChildren().remove(QueuingCalBtn);
                    DistanceTimeSpeedReset();
                    ShannonNyquistReset();
+                   QueuingReset();
                    
                    DistanceTimeSpeed();
                    ShannonNyquist();
+                   Queuing();
             }         
            });
     }
