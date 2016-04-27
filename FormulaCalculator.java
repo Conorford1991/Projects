@@ -14,8 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-// Reset Resetobject = new Reset(); // object of ShannonNyquist class
-                   //Resetobject.reset(); // method call
+
 /**
  *
  * @author Conor
