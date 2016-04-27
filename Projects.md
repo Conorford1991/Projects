@@ -7,7 +7,7 @@ https://github.com/Conorford1991/Projects/blob/master/Fib.java
 - Monte Carlo simulation to determine Pi & length of time to calculate (C++)
 https://github.com/Conorford1991/Projects/blob/master/MonteCarlo.cpp
 
-- Formula Calculator with GUI (including Time / Distance / Speed, Shannon & Nyquist capacity calculations) (Java, JavaFx)
+- Formula Calculator with GUI (including Time / Distance / Speed, Shannon & Nyquist capacity and Single-Queuing Theory calculations. With clear function to clear input/outputs and a reset function to return to original state.There is error checking to ensure that suitable values are entered) (Java, JavaFx)
 https://github.com/Conorford1991/Projects/blob/master/FormulaCalculator.java
 
 - Determines if a number is prime (C++)
