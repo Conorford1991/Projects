@@ -118,8 +118,8 @@ public class ZombieDice extends Application {
         
     }
     public void RollAgainButton(){
-        RollAgainBtn = new Button("Roll again");
-        // Roll again button
+            RollAgainBtn = new Button("Roll again");
+            // Roll again button
             vbButtons.getChildren().add(RollAgainBtn);
             RollAgainBtn.setOnAction(new EventHandler<ActionEvent>() {
             
@@ -158,7 +158,9 @@ public class ZombieDice extends Application {
             alert.setContentText("Player ended turn");
             alert.showAndWait();
           
-            RollButton();
+            Reset();
+            clear();
+            EndGame();
             }
         });
     }
@@ -618,6 +620,8 @@ public class ZombieDice extends Application {
         @Override
         public void handle(ActionEvent event) {
             clear();
+            Reset();
+            Turn = 1;
             RollButton();
           }
         });
@@ -634,6 +638,9 @@ public class ZombieDice extends Application {
            alert.setHeaderText(null);
            alert.setContentText("Thank you for playing Zombie Dice");
            alert.showAndWait();
+           
+           // Exits game
+           System.exit(0);
           }
         });
     }
@@ -641,6 +648,7 @@ public class ZombieDice extends Application {
         Shotguns = 0;
         Brains = 0;
         Footprints = 0;
+        Turn = 0;
     }
     }
 
