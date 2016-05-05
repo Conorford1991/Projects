@@ -1,6 +1,7 @@
 
 package zombiedice;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -34,20 +36,27 @@ public class ZombieDice extends Application {
     public Button RollAgainBtn;
     public Button EndGameBtn;
     public Button PlayAgainBtn;
+    public Button EnterNameBtn;
     // Variables
     public int Shotguns;
     public int Footprints;
     public int Brains;
     public int Turn;
-    
+    public String Name;
     // Labels
     public Label ShotgunLabel;
     public Label FootprintLabel;
     public Label BrainLabel;
     public Label TurnLabel;
     public Label EndTurn;
+    public Label NameLabel;
+   
+    // Textfield
+    public TextField NameTf;
    
     DiceRoll DiceRollobject = new DiceRoll();  // object of DiceRoll class
+    Player Playerobject = new Player();
+    ArrayList<Player> playerList = new ArrayList<Player>();
     
     @Override
     public void start(Stage primaryStage) {
@@ -74,7 +83,7 @@ public class ZombieDice extends Application {
         
         // add vbox buttons to stack pane
         sp.getChildren().add(vbButtons);
-        vbButtons.setAlignment(Pos.TOP_RIGHT);
+        vbButtons.setAlignment(Pos.TOP_CENTER);
   
         Scene scene = new Scene(sp, 800, 700); // Horizontal, vertical
       
@@ -83,7 +92,7 @@ public class ZombieDice extends Application {
         primaryStage.show();
         
         // member function calls
-        RollButton();
+        Player();
       
     }
 
@@ -649,6 +658,52 @@ public class ZombieDice extends Application {
         Brains = 0;
         Footprints = 0;
         Turn = 0;
+    }
+    public void Player(){
+        NameTf = new TextField();
+        EnterNameBtn = new Button("Enter name");
+        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Welcome to Zombie Dice");
+        alert.setHeaderText(null);
+        alert.setContentText("Welcome to Zombie Dice, ready to play?");
+        alert.showAndWait();
+       
+        NameTf.setEditable(true);
+        NameTf.setMaxWidth(100);
+        vbButtons.getChildren().add(NameTf);
+        
+        vbButtons.getChildren().add(EnterNameBtn);
+        
+        EnterNameBtn.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            
+            if(NameTf.getText() == null || NameTf.getText().trim().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("No value");
+                alert.setHeaderText(null);
+                alert.setContentText("Please enter a suitable name");
+                alert.showAndWait();
+             }
+            else{
+                String Name = NameTf.getText(); 
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Name");
+                alert.setHeaderText(null);
+                alert.setContentText("You entered: "+Name);
+                alert.showAndWait();
+                
+                Playerobject.SetName(Name);
+                String SelectName = Playerobject.GetName();
+                
+                vbButtons.getChildren().remove(NameTf);
+                vbButtons.getChildren().remove(EnterNameBtn);
+            
+                RollButton();
+            }
+          }
+        });
     }
     }
 
