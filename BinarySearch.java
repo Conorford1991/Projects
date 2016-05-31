@@ -1,43 +1,51 @@
 import java.util.*;
-// O (log n)
-// As binary search reduces the searchable elements by half each time so the performance is O(log n)
 
 class BinarySearch{
-	public static void main(String[] args){
-		// max value
-		int max = 9;
-		// Value to be searched
-		int key = 6;
-		// Create array
-		int[] array = new int [10];
-		// Fill array
-		for(int i=0; i<10; i++){
+	public static void main(String []args){
+		// create array
+		int[] array = new int[1000000];
+		// key to find
+		int key = 16384;
+		// populate array
+		for(int i=0; i<1000000; i++){
 			array[i] = i;
-			System.out.println(i);
+			//System.out.println(i);
 		}
-		BinarySearch(array,key,max);
+		// start timer
+		long startTime = System.nanoTime();
+		// function call
+		BinarySearch(key,array);
+		// end timer
+		long endTime = System.nanoTime();
+        // duration result
+        long duration = (endTime - startTime);
+        System.out.println(duration);
 	}
-	public static void BinarySearch(int[] array, int key, int max){
+	public static void BinarySearch(int key, int[] array){
+		// position
+		int position;
+		// upperbound
+		int upperbound = array[999999];
 		// lowerbound
 		int lowerbound = array[0];
-		// upperbound
-		int upperbound = array[max];
-		// index positon
-		int position;
-		
+		// postion is half of array index
 		position = (lowerbound+upperbound)/2;
 		
 		while(array[position] != key && lowerbound <= upperbound){
 			if(array[position] > key){
+				// move upperbound down
 				upperbound = position -1;
 			}
 			else if(array[position] < key){
+				// move lowerbound up
 				lowerbound = position +1;
 			}
+			// reset position
 			position = (lowerbound+upperbound)/2;
 		}
+		// result
 		if(lowerbound <= upperbound){
 			System.out.println("Key was found at position: "+position);
 		}
-	} 
+	}
 }
