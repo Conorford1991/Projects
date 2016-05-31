@@ -3,32 +3,33 @@ import java.util.*;
 
 class BinarySearch{
 	public static void main(String []args){
+		int max = 1000000;
 		// create array
-		int[] array = new int[1000000];
+		int[] array = new int[max];
 		// key to find
 		int key = 16384;
 		// populate array
-		for(int i=0; i<1000000; i++){
+		for(int i=0; i<max; i++){
 			array[i] = i;
 			//System.out.println(i);
 		}
 		// start timer
 		long startTime = System.nanoTime();
 		// function call
-		BinarySearch(key,array);
+		BinarySearch(key,array,max);
 		// end timer
 		long endTime = System.nanoTime();
                 // duration result
                 long duration = (endTime - startTime);
                 System.out.println("Time: "+duration+" ns");
 	}
-	public static void BinarySearch(int key, int[] array){
+	public static void BinarySearch(int key, int[] array,int max){
 		// count variable
 		int count=0;
 		// position
 		int position;
 		// upperbound
-		int upperbound = array[999999];
+		int upperbound = array[max-1];
 		// lowerbound
 		int lowerbound = array[0];
 		// postion is half of array index
