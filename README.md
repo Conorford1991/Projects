@@ -1,17 +1,8 @@
 # Projects
 Project repository
 
-- Recursive and Iterative solutions to compute the nth Fibonacci number (Java)
-https://github.com/Conorford1991/Projects/blob/master/Fib.java
-
-- Monte Carlo simulation to determine Pi & length of time to calculate (C++)
-https://github.com/Conorford1991/Projects/blob/master/MonteCarlo.cpp
-
 - Formula Calculator with GUI (including Time / Distance / Speed, Shannon & Nyquist capacity and Single-Queuing Theory calculations. With clear function to clear input/outputs and a reset function to return to original state.There is error checking to ensure that suitable values are entered) (Java, JavaFx)
 https://github.com/Conorford1991/Projects/blob/master/FormulaCalculator.java
-
-- Determines if a number is prime (C++)
-https://github.com/Conorford1991/Projects/blob/master/Prime.cpp
 
 - Zombie Dice (My take on the popular dice game, Zombie Dice. Designed using Java/JavaFX )
 https://github.com/Conorford1991/ZombieDice
@@ -25,4 +16,13 @@ https://github.com/Conorford1991/Projects/blob/master/Scheduler.java
 Algorithims:
 - Binary Search (Java)
 https://github.com/Conorford1991/Projects/blob/master/BinarySearch.java
+
+- Recursive and Iterative solutions to compute the nth Fibonacci number (Java)
+https://github.com/Conorford1991/Projects/blob/master/Fib.java
+
+- Monte Carlo simulation to determine Pi & length of time to calculate (C++)
+https://github.com/Conorford1991/Projects/blob/master/MonteCarlo.cpp
+
+- Determines if a number is prime (C++)
+https://github.com/Conorford1991/Projects/blob/master/Prime.cpp
 
