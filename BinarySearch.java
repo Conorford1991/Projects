@@ -4,8 +4,10 @@ import java.util.*;
 
 class BinarySearch{
 	public static void main(String[] args){
+		// max value
+		int max = 9;
 		// Value to be searched
-		int key = 9;
+		int key = 6;
 		// Create array
 		int[] array = new int [10];
 		// Fill array
@@ -13,28 +15,25 @@ class BinarySearch{
 			array[i] = i;
 			System.out.println(i);
 		}
-		BinarySearch(array,key);
+		BinarySearch(array,key,max);
 	}
-	public static void BinarySearch(int[] array, int key){
+	public static void BinarySearch(int[] array, int key, int max){
 		// lowerbound
 		int lowerbound = array[0];
 		// upperbound
-		int upperbound = array[9];
+		int upperbound = array[max];
 		// index positon
 		int position;
-		// position = middle of the array
+		
 		position = (lowerbound+upperbound)/2;
 		
 		while(array[position] != key && lowerbound <= upperbound){
 			if(array[position] > key){
-				// move upperbound down
 				upperbound = position -1;
 			}
 			else if(array[position] < key){
-				// move lowerbound up
 				lowerbound = position +1;
 			}
-			// again move positon to middle of new order
 			position = (lowerbound+upperbound)/2;
 		}
 		if(lowerbound <= upperbound){
