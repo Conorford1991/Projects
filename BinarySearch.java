@@ -1,4 +1,4 @@
-// Binary search is O(log n) as it halfs the elements to be searched each interation. 
+// Binary search is O(log n) as it half the elements to be searched each interation. 
 import java.util.*;
 
 class BinarySearch{
