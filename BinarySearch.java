@@ -22,16 +22,19 @@ class BinarySearch{
 		int upperbound = array[9];
 		// index positon
 		int position;
-		
+		// position = middle of the array
 		position = (lowerbound+upperbound)/2;
 		
 		while(array[position] != key && lowerbound <= upperbound){
 			if(array[position] > key){
+				// move upperbound down
 				upperbound = position -1;
 			}
 			else if(array[position] < key){
+				// move lowerbound up
 				lowerbound = position +1;
 			}
+			// again move positon to middle of new order
 			position = (lowerbound+upperbound)/2;
 		}
 		if(lowerbound <= upperbound){
