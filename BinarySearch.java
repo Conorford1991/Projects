@@ -17,9 +17,9 @@ class BinarySearch{
 		BinarySearch(key,array);
 		// end timer
 		long endTime = System.nanoTime();
-        // duration result
-        long duration = (endTime - startTime);
-        System.out.println(duration);
+                // duration result
+                long duration = (endTime - startTime);
+                System.out.println(duration);
 	}
 	public static void BinarySearch(int key, int[] array){
 		// position
