@@ -20,9 +20,11 @@ class BinarySearch{
 		long endTime = System.nanoTime();
                 // duration result
                 long duration = (endTime - startTime);
-                System.out.println(duration);
+                System.out.println("Time: "+duration+" ns");
 	}
 	public static void BinarySearch(int key, int[] array){
+		// count variable
+		int count=0;
 		// position
 		int position;
 		// upperbound
@@ -43,10 +45,13 @@ class BinarySearch{
 			}
 			// reset position
 			position = (lowerbound+upperbound)/2;
+			// count iterations
+			count++;
 		}
 		// result
 		if(lowerbound <= upperbound){
 			System.out.println("Key was found at position: "+position);
+			System.out.println("Iterations: "+count);
 		}
 	}
 }
