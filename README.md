@@ -13,7 +13,7 @@ https://github.com/Conorford1991/Projects/blob/master/LoanCalculator.java
 - Patient scheduler for a doctor. Each patient is assigned a time slot and their details are recorded (Java) *** In progress
 https://github.com/Conorford1991/Projects/blob/master/Scheduler.java
 
-Algorithims:
+Algorithms:
 - Binary Search (Java)
 https://github.com/Conorford1991/Projects/blob/master/BinarySearch.java
 
