@@ -11,3 +11,4 @@ Final Year Project (BScH Computer Science)
 Files:
 - Java Algorithms: https://github.com/Conorford1991/Projects/tree/master/Algorithms%20(Java) 
 - Python Algorithms: https://github.com/Conorford1991/Projects/tree/master/Algorithms%20(Python)
+- C++ Algorithms: https://github.com/Conorford1991/Projects/tree/master/Algorithms%20(C%2B%2B)
