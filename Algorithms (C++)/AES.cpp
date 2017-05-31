@@ -1,5 +1,7 @@
-// AES algorithm
-// Author: Conor Ford
+/*
+Author: Conor Ford
+AES class
+*/
 
 #include "stdafx.h"
 // cryptlib.h provides basic abstractions for the Crypto++ library. 
@@ -19,9 +21,7 @@
 // The HexEncoder encodes bytes into base 16 encoded data, making it easier to display
 #include "..\Crypto++\hex.h"
 
-
-
-
+// Namespaces
 using namespace std;
 using namespace CryptoPP;
 
@@ -43,15 +43,21 @@ string AESEncrypt(string plaintext, SecByteBlock key, byte IV[AES::BLOCKSIZE]) {
 	);
 
 	// Print using pipelining
+	// StringSource is a source for character arrays and strings, true value indicates if the StringSource should pump all of the data immediately to its attached transformation.
 	StringSource(ciphertext, true,
 		// The HexEncoder encodes bytes into base 16 encoded data, making it easier to display
 		new HexEncoder(
+			/* StringSink serves as a destination for string data. The StringSink takes a reference to a string.
+			Because a reference is taken, the StringSink does not own output, and therefore will not destroy the output.*/
 			new StringSink(encoded)
 		)
 	);
 
+	// Write ciphertext to file
+	EncryptedFileWriter(encoded, "AES");
 
-	cout << "AES Ciphertext: " << encoded << endl;
+	// Print
+	cout << "AES encryption complete. Ciphertext write to file complete" << endl;
 
 	return ciphertext;
 
@@ -71,7 +77,11 @@ void AESDecrypt(string ciphertext, SecByteBlock key, byte IV[AES::BLOCKSIZE]) {
 		)
 	);
 
-	cout << "AES Plaintext after decryption: " << plaintext << endl;
+	// Write plaintext to file
+	DecryptedFileWriter(plaintext, "AES");
+
+	// Print
+	cout << "AES decryption complete. Plaintext write to file complete" << endl;
 }
 
 

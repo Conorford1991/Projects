@@ -1,5 +1,7 @@
-// DES algorithm
-// Author: Conor Ford
+/*
+Author: Conor Ford
+DES class
+*/
 
 #include "stdafx.h"
 // cryptlib.h provides basic abstractions for the Crypto++ library. 
@@ -19,9 +21,7 @@
 // The HexEncoder encodes bytes into base 16 encoded data, making it easier to display
 #include "..\Crypto++\hex.h"
 
-
-
-
+// Namespaces
 using namespace std;
 using namespace CryptoPP;
 
@@ -42,15 +42,22 @@ string DESEncrypt(string plaintext, SecByteBlock key, byte IV[DES::BLOCKSIZE]) {
 	);
 
 	// Print using pipelining
+	// StringSource is a source for character arrays and strings, true value indicates if the StringSource should pump all of the data immediately to its attached transformation.
 	StringSource(ciphertext, true,
 		// The HexEncoder encodes bytes into base 16 encoded data, making it easier to display
 		new HexEncoder(
+			/* StringSink serves as a destination for string data. The StringSink takes a reference to a string.
+			Because a reference is taken, the StringSink does not own output, and therefore will not destroy the output.*/
 			new StringSink(encoded)
 		)
 	);
 
 
-	cout << "DES Ciphertext: " << encoded << endl;
+	// Write ciphertext to file
+	EncryptedFileWriter(encoded, "DES");
+
+	// Print
+	cout << "DES encryption complete. Ciphertext write to file complete" << endl;
 
 	return ciphertext;
 
@@ -70,7 +77,9 @@ void DESDecrypt(string ciphertext, SecByteBlock key, byte IV[DES::BLOCKSIZE]) {
 		)
 	);
 
+	// Write plaintext to file
+	DecryptedFileWriter(plaintext, "DES");
 
-
-	cout << "DES Plaintext after decryption: " << plaintext << endl;
+	// Print
+	cout << "DES decryption complete. Plaintext write to file complete" << endl;
 }

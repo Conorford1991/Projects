@@ -1,3 +1,8 @@
+/*
+Author: Conor Ford
+TDES class
+*/
+
 #include "stdafx.h"
 // cryptlib.h provides basic abstractions for the Crypto++ library. 
 #include "..\Crypto++\cryptlib.h"
@@ -18,6 +23,7 @@
 // Time elapsed calculation
 #include <time.h>
 
+// Namespaces
 using namespace std;
 using namespace CryptoPP;
 
@@ -32,21 +38,27 @@ string TDESEncrypt(string plaintext, SecByteBlock key, byte IV[DES_EDE3::BLOCKSI
 		// Tranform the encrypted data into characters using pipelining also add padding if required
 		new StreamTransformationFilter(encrypt,
 			/* StringSink serves as a destination for string data. The StringSink takes a reference to a string.
-			Because a reference is taken, the StringSink does not own output, and therefore will not destroy output.*/
+			Because a reference is taken, the StringSink does not own output, and therefore will not destroy the output.*/
 			new StringSink(ciphertext)
 		)
 	);
 
 	// Print using pipelining
+	// StringSource is a source for character arrays and strings, true value indicates if the StringSource should pump all of the data immediately to its attached transformation.
 	StringSource(ciphertext, true,
 		// The HexEncoder encodes bytes into base 16 encoded data, making it easier to display
 		new HexEncoder(
+			/* StringSink serves as a destination for string data. The StringSink takes a reference to a string.
+			Because a reference is taken, the StringSink does not own output, and therefore will not destroy the output.*/
 			new StringSink(encoded)
 		)
 	);
 
+	// Write ciphertext to file
+	EncryptedFileWriter(encoded, "TDES");
 
-	cout << "TDES Ciphertext: " << encoded << endl;
+	// Print
+	cout << "TDES encryption complete. Ciphertext write to file complete" << endl;
 
 	return ciphertext;
 
@@ -66,7 +78,10 @@ void TDESDecrypt(string ciphertext, SecByteBlock key, byte IV[DES_EDE3::BLOCKSIZ
 		)
 	);
 
+	// Write plaintext to file
+	DecryptedFileWriter(plaintext, "TDES");
 
+	// Print
+	cout << "TDES decryption complete. Plaintext write to file complete" << endl;
 
-	cout << "TDES Plaintext after decryption: " << plaintext << endl;
 }

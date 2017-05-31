@@ -1,7 +1,12 @@
-// stdafx.h : include file for standard system include files,
-// or project specific include files that are used frequently, but
-// are changed infrequently
-//
+/*
+Author: Conor Ford
+header class
+*/
+
+/* stdafx.h : include file for standard system include files,
+or project specific include files that are used frequently, but
+ are changed infrequently
+*/
 
 #pragma once
 
@@ -36,11 +41,16 @@
 using namespace std;
 using namespace CryptoPP;
 
+
 // File reader
-string FileReader();
+string FileReader(string DataSizeSelect);
 
 // Key reader
 string KeyReader();
+
+// FileWriter
+void EncryptedFileWriter(string text, string AlgoType);
+void DecryptedFileWriter(string text, string AlgoType);
 
 // AES
 string AESEncrypt(string plaintext, SecByteBlock key, byte IV[AES::BLOCKSIZE]);
