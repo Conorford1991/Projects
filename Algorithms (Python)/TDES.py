@@ -1,6 +1,6 @@
 '''
 Author: Conor Ford
-3DES encryption algorithm (using the PyCryptodome class library)
+TDES class
 '''
 
 #Modules
@@ -9,6 +9,7 @@ import os
 # Pycryptodome classes (import of AES) & (random generator)
 from Crypto.Cipher import DES3
 from Crypto.Random import get_random_bytes
+import FileReader
 
 # Encryption
 def Encrypt(plaintext_bytes):
@@ -24,7 +25,9 @@ def Encrypt(plaintext_bytes):
 
     # Generate & print the ciphertext
     ciphertext = cipher.encrypt(plaintext_bytes)
-    print("TDES Ciphertext: ", ciphertext)
+
+    FileReader.EncryptedFileWriter(str(ciphertext), "TDES");
+    print("TDES encryption complete. Ciphertext write to file complete")
 
     # return ciphertext
     return (ciphertext,iv,key)
@@ -37,7 +40,9 @@ def Decrypt(ciphertext,iv,key):
 
     # Generate plaintext & print
     plaintext = cipher.decrypt(ciphertext)
-    print("TDES Plaintext: ",plaintext)
+
+    FileReader.DecryptedFileWriter(str(plaintext), "TDES");
+    print("TDES decryption complete. Plaintext write to file complete")
 
 
 

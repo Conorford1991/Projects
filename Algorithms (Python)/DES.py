@@ -1,6 +1,6 @@
 '''
 Author: Conor Ford
-DES encryption algorithm (using the PyCryptodome class library)
+DES class
 '''
 
 #Modules
@@ -9,7 +9,7 @@ import os
 # Pycryptodome classes (import of DES) & (random generator)
 from Crypto.Cipher import DES
 from Crypto.Random import get_random_bytes
-
+import FileReader
 
 
 # Encryption
@@ -27,7 +27,9 @@ def Encrypt(plaintext_bytes):
 
     # Generate & print the ciphertext
     ciphertext = cipher.encrypt(plaintext_bytes)
-    print("DES Ciphertext: ",ciphertext)
+
+    FileReader.EncryptedFileWriter(str(ciphertext), "DES");
+    print("DES encryption complete. Ciphertext write to file complete")
 
     # return ciphertext
     return (ciphertext,iv,key)
@@ -40,7 +42,9 @@ def Decrypt(ciphertext,iv,key):
 
     # Generate plaintext & print
     plaintext = cipher.decrypt(ciphertext)
-    print("DES Plaintext: ",plaintext)
+
+    FileReader.DecryptedFileWriter(str(plaintext), "DES");
+    print("DES decryption complete. Plaintext write to file complete")
 
 
 

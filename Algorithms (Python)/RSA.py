@@ -1,8 +1,6 @@
 '''
 Author: Conor Ford
-RSA encryption algorithm (using the PyCryptodome class library)
-RSA add's 11 bytes to the message. So, using a 1024 (128 bytes)-bit key, you'll have 117 bytes available for the message.
-Therefore RSA isn't usually used to encrypt messages, it's mostly used to encrypt symmetric keys used to encrypt messages.
+RSA class
 '''
 
 #Modules
@@ -12,6 +10,7 @@ import os
 from Crypto.PublicKey import RSA
 from Crypto import Random
 from Crypto.Cipher import PKCS1_OAEP
+import FileReader
 
 def Encrypt(plaintext):
     # Random generator
@@ -25,7 +24,9 @@ def Encrypt(plaintext):
 
     # Encrypt
     ciphertext = cipher.encrypt(plaintext)
-    print("RSA (AES key) Ciphertext: ",ciphertext)
+
+    FileReader.EncryptedFileWriter(str(ciphertext), "RSA");
+    print("RSA encryption complete. Ciphertext write to file complete")
 
     return (ciphertext,key,cipher)
 
@@ -33,7 +34,9 @@ def Decrypt(ciphertext,key,cipher):
 
     # Decrypt with private key
     plaintext = cipher.decrypt(ciphertext)
-    print("RSA (AES key) after decryption: ",plaintext)
+
+    FileReader.DecryptedFileWriter(str(plaintext), "RSA");
+    print("RSA decryption complete. Plaintext write to file complete")
 
     return plaintext
 

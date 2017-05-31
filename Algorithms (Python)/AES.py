@@ -1,6 +1,6 @@
 '''
 Author: Conor Ford
-AES encryption algorithm (using the PyCryptodome class library)
+AES class
 '''
 
 #Modules
@@ -9,6 +9,8 @@ import os
 # Pycryptodome classes (import of RSA) & (random generator)
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
+import FileReader
+
 
 # Encryption
 def Encrypt(plaintext):
@@ -24,7 +26,10 @@ def Encrypt(plaintext):
 
     # Generate & print the ciphertext
     ciphertext = cipher.encrypt(plaintext)
-    print("AES Ciphertext: ",ciphertext)
+
+
+    FileReader.EncryptedFileWriter(str(ciphertext), "AES");
+    print("AES encryption complete. Ciphertext write to file complete")
 
     # return ciphertext
     return (ciphertext,iv,key)
@@ -37,5 +42,8 @@ def Decrypt(ciphertext,iv,key):
 
     # Generate plaintext & print
     plaintext = cipher.decrypt(ciphertext)
-    print("AES Plaintext: ",plaintext)
+
+    FileReader.DecryptedFileWriter(str(plaintext), "AES");
+    print("AES decryption complete. Plaintext write to file complete")
+
 

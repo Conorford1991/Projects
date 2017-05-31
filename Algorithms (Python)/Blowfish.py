@@ -1,6 +1,6 @@
 '''
 Author: Conor Ford
-Blowfish encryption algorithm (using the PyCryptodome class library)
+Blowfish class
 '''
 
 #Modules
@@ -9,7 +9,7 @@ import os
 # Pycryptodome classes (import of Blowfish) & (random generator)
 from Crypto.Cipher import Blowfish
 from Crypto.Random import get_random_bytes
-
+import FileReader
 
 
 # Encryption
@@ -26,7 +26,9 @@ def Encrypt(plaintext_bytes):
 
     # Generate & print the ciphertext
     ciphertext = cipher.encrypt(plaintext_bytes)
-    print("Blowfish Ciphertext: ",ciphertext)
+
+    FileReader.EncryptedFileWriter(str(ciphertext), "Blowfish");
+    print("Blowfish encryption complete. Ciphertext write to file complete")
 
     # return ciphertext
     return (ciphertext,iv,key)
@@ -39,5 +41,7 @@ def Decrypt(ciphertext,iv,key):
 
     # Generate plaintext & print
     plaintext = cipher.decrypt(ciphertext)
-    print("Blowfish Plaintext: ",plaintext)
+
+    FileReader.DecryptedFileWriter(str(plaintext), "Blowfish");
+    print("Blowfish decryption complete. Plaintext write to file complete")
 
