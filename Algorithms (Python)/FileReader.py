@@ -3,8 +3,10 @@ Author: Conor Ford
 FileReader class
 '''
 
+class FileReader:
+
 # File reader method ("rb" opening for [r]eading as [b]inary )
-def FileRead(File):
+ def FileRead(self,File):
     # open file
     FileIn = open(File, "rb")
 
@@ -18,7 +20,7 @@ def FileRead(File):
     return plaintext_bytes
 
 # Read key method
-def KeyRead():
+ def KeyRead(self):
     # open file
     FileIn = open("C:\\Users\\Conor\\Desktop\\Computer Science\\Project\\AESkey.txt", "rb")
 
@@ -32,9 +34,9 @@ def KeyRead():
     return plaintext_bytes
 
 # write ciphertext to file
-def EncryptedFileWriter(Text,AlgoType):
+ def EncryptedFileWriter(self,Text,AlgoType):
     # open file
-    FileIn = open("C:\\Users\\Conor\\Desktop\\Project Demo\\Encrypted Files\\ " + AlgoType + " (Python).txt", "w")
+    FileIn = open("C:\\Users\\Conor\\Desktop\\Computer Science\\Project\\Python\\Encrypted Files " + AlgoType + " (Python).txt", "w")
 
     # file write
     FileIn.write(Text)
@@ -43,9 +45,9 @@ def EncryptedFileWriter(Text,AlgoType):
     FileIn.close()
 
 # write plaintext to file
-def DecryptedFileWriter(Text,AlgoType):
+ def DecryptedFileWriter(self,Text,AlgoType):
     # open file
-    FileIn = open("C:\\Users\\Conor\\Desktop\\Project Demo\\Decrypted Files\\ " + AlgoType + " (Python).txt", "w")
+    FileIn = open("C:\\Users\\Conor\\Desktop\\Computer Science\\Project\\Python\\Decrypted Files " + AlgoType + " (Python).txt", "w")
 
     # file write
     FileIn.write(Text)

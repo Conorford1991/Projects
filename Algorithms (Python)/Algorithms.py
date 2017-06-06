@@ -3,132 +3,159 @@ Author: Conor Ford
 Algorithms class
 '''
 
-# imports
-import AES
-import Blowfish
-import DES
-import TDES
-import RSA
-import FileReader
-
 #Modules
-# OS module
-import os
+from AES import Aes
+from Blowfish import Bf
+from DES import Des
+from TDES import Tdes
+from RSA import Rsa
+from FileReader import FileReader
 import time
-# Performance analysis (output expressed in bytes)
 import psutil
 
+class Algorithms:
 
-
-def AES_call(DataSizeSelect):
+# (self ) makes methods entirely the same as functions
+ def AES_call(self,DataSizeSelect):
     # File reader call
-    plaintext_bytes = FileReader.FileRead(DataSizeSelect)
+    plaintext_bytes = FileReader().FileRead(DataSizeSelect)
 
     Encryptstart = time.time()
     # Encrypt call
-    ciphertext_bytes, iv, key = AES.Encrypt(plaintext_bytes)
+    ciphertext_bytes, iv, key = Aes().Encrypt(plaintext_bytes)
     Encryptend = time.time()
 
     Decryptstart = time.time()
     # Decrypt call
-    AES.Decrypt(ciphertext_bytes, iv, key)
+    Aes().Decrypt(ciphertext_bytes, iv, key)
     Decryptend = time.time()
 
+    # Encrypt Time
+    encrypttime = Encryptend - Encryptstart
+
+    # Decrypt time
+    decrypttime = Decryptend - Decryptstart
+
+    # cpu and memory cal
+    memory = psutil.virtual_memory()
+    cpu = psutil.cpu_percent(interval=1)
+
     # Print
-    print("AES encryption time: ",Encryptend - Encryptstart)
-    print("AES decryption time: ",Decryptend - Decryptstart)
-    print("AES CPU usage: ",(psutil.cpu_percent(interval=1))," percent")
-    print("AES Memory usage: ",(psutil.virtual_memory())," bytes")
-    print("----------------------------------------------")
+    Algorithms().display(encrypttime,decrypttime,cpu,memory,'AES')
 
 
-def Blowfish_call(DataSizeSelect):
+
+ def Blowfish_call(self,DataSizeSelect):
     # File reader call
-    plaintext_bytes = FileReader.FileRead(DataSizeSelect)
+    plaintext_bytes = FileReader().FileRead(DataSizeSelect)
 
     Encryptstart = time.time()
     # Encrypt call
-    ciphertext_bytes, iv, key = Blowfish.Encrypt(plaintext_bytes)
+    ciphertext_bytes, iv, key = Bf().Encrypt(plaintext_bytes)
     Encryptend = time.time()
 
     Decryptstart = time.time()
     # Decrypt call
-    Blowfish.Decrypt(ciphertext_bytes, iv, key)
+    Bf().Decrypt(ciphertext_bytes, iv, key)
     Decryptend = time.time()
 
-    # Print
-    print("Blowfish encryption time: ", Encryptend - Encryptstart)
-    print("Blowfish decryption time: ", Decryptend - Decryptstart)
-    print("Blowfish CPU usage: ", (psutil.cpu_percent(interval=1)), " percent")
-    print("Blowfish Memory usage: ", (psutil.virtual_memory()), " bytes")
-    print("----------------------------------------------")
+    # Encrypt Time
+    encrypttime = Encryptend - Encryptstart
 
-def DES_call(DataSizeSelect):
+    # Decrypt time
+    decrypttime = Decryptend - Decryptstart
+
+    # cpu and memory cal
+    memory = psutil.virtual_memory()
+    cpu = psutil.cpu_percent(interval=1)
+
+    # Print
+    Algorithms().display(encrypttime, decrypttime, cpu, memory, 'Blowfish')
+
+ def DES_call(self,DataSizeSelect):
     # File reader call
-    plaintext_bytes = FileReader.FileRead(DataSizeSelect)
+    plaintext_bytes = FileReader().FileRead(DataSizeSelect)
 
     Encryptstart = time.time()
     # Encrypt call
-    ciphertext_bytes, iv, key = DES.Encrypt(plaintext_bytes)
+    ciphertext_bytes, iv, key = Des().Encrypt(plaintext_bytes)
     Encryptend = time.time()
 
     Decryptstart = time.time()
     # Decrypt call
-    DES.Decrypt(ciphertext_bytes, iv, key)
+    Des().Decrypt(ciphertext_bytes, iv, key)
     Decryptend = time.time()
 
+    # Encrypt Time
+    encrypttime = Encryptend - Encryptstart
+
+    # Decrypt time
+    decrypttime = Decryptend - Decryptstart
+
+    # cpu and memory cal
+    memory = psutil.virtual_memory()
+    cpu = psutil.cpu_percent(interval=1)
+
     # Print
-    print("DES encryption time: ", Encryptend - Encryptstart)
-    print("DES decryption time: ", Decryptend - Decryptstart)
-    print("DES CPU usage: ", (psutil.cpu_percent(interval=1)), " percent")
-    print("DES Memory usage: ", (psutil.virtual_memory()), " bytes")
-    print("----------------------------------------------")
+    Algorithms().display(encrypttime, decrypttime, cpu, memory, 'DES')
 
 
-def TDES_call(DataSizeSelect):
+ def TDES_call(self,DataSizeSelect):
     # File reader call
-    plaintext_bytes = FileReader.FileRead(DataSizeSelect)
+    plaintext_bytes = FileReader().FileRead(DataSizeSelect)
 
     Encryptstart = time.time()
     # Encrypt call
-    ciphertext_bytes, iv, key = TDES.Encrypt(plaintext_bytes)
+    ciphertext_bytes, iv, key = Tdes().Encrypt(plaintext_bytes)
     Encryptend = time.time()
 
     Decryptstart = time.time()
     # Decrypt call
-    TDES.Decrypt(ciphertext_bytes, iv, key)
+    Tdes().Decrypt(ciphertext_bytes, iv, key)
     Decryptend = time.time()
 
+    # Encrypt Time
+    encrypttime = Encryptend - Encryptstart
+
+    # Decrypt time
+    decrypttime = Decryptend - Decryptstart
+
+    # cpu and memory cal
+    memory = psutil.virtual_memory()
+    cpu = psutil.cpu_percent(interval=1)
+
     # Print
-    print("TDES encryption time: ", Encryptend - Encryptstart)
-    print("TDES decryption time: ", Decryptend - Decryptstart)
-    print("TDES CPU usage: ", (psutil.cpu_percent(interval=1)), " percent")
-    print("TDES Memory usage: ", (psutil.virtual_memory()), " bytes")
-    print("----------------------------------------------")
+    Algorithms().display(encrypttime, decrypttime, cpu, memory, 'TDES')
 
 
-def RSA_call():
+ def RSA_call(self):
     # File reader call
-    plaintext_bytes = FileReader.KeyRead()
+    plaintext_bytes = FileReader().KeyRead()
 
     Encryptstart = time.time()
     # Encrypt call
-    ciphertext_bytes, iv, key = RSA.Encrypt(plaintext_bytes)
+    ciphertext_bytes, iv, key = Rsa().Encrypt(plaintext_bytes)
     Encryptend = time.time()
 
     Decryptstart = time.time()
     # Decrypt call
-    RSA.Decrypt(ciphertext_bytes, iv, key)
+    Rsa().Decrypt(ciphertext_bytes, iv, key)
     Decryptend = time.time()
 
-    # Print
-    print("RSA encryption time: ", Encryptend - Encryptstart)
-    print("RSA decryption time: ", Decryptend - Decryptstart)
-    print("RSA CPU usage: ", (psutil.cpu_percent(interval=1)), " percent")
-    print("RSA Memory usage: ", (psutil.virtual_memory()), " bytes")
-    print("----------------------------------------------")
+    # Encrypt Time
+    encrypttime = Encryptend - Encryptstart
 
-def UserInput():
+    # Decrypt time
+    decrypttime = Decryptend - Decryptstart
+
+    # cpu and memory cal
+    memory = psutil.virtual_memory()
+    cpu = psutil.cpu_percent(interval=1)
+
+    # Print
+    Algorithms().display(encrypttime, decrypttime, cpu, memory, 'RSA')
+
+ def UserInput(self):
 
     ExecutionSelect = input("Start or End execution")
 
@@ -158,47 +185,52 @@ def UserInput():
 
         else:
             print("Invalid data input, try again")
-            UserInput()
+            self.UserInput()
 
         if (AlgorithmSelect == "AES"):
-            AES_call(DataSizeSelect)
-            UserInput()
+            self.AES_call(DataSizeSelect)
+            self.UserInput()
 
         elif (AlgorithmSelect == "Blowfish"):
-            Blowfish_call(DataSizeSelect)
-            UserInput()
+            self.Blowfish_call(DataSizeSelect)
+            self.UserInput()
 
         elif (AlgorithmSelect == "TDES"):
-            TDES_call(DataSizeSelect)
-            UserInput()
+            self.TDES_call(DataSizeSelect)
+            self.UserInput()
 
         elif (AlgorithmSelect == "DES"):
-            DES_call(DataSizeSelect)
-            UserInput()
+            self.DES_call(DataSizeSelect)
+            self.UserInput()
 
         elif (AlgorithmSelect == "RSA"):
-            RSA_call()
-            UserInput()
+            self.RSA_call()
+            self.UserInput()
 
         elif (AlgorithmSelect == "All"):
-            AES_call(DataSizeSelect)
-            Blowfish_call(DataSizeSelect)
-            TDES_call(DataSizeSelect)
-            DES_call(DataSizeSelect)
-            RSA_call()
-            UserInput()
+            self.AES_call(DataSizeSelect)
+            self.Blowfish_call(DataSizeSelect)
+            self.TDES_call(DataSizeSelect)
+            self.DES_call(DataSizeSelect)
+            self.RSA_call()
+            self.UserInput()
 
         else:
             print("Invalid algorithm input, try again")
-            UserInput()
+            self.UserInput()
 
         break
 
+ def display(self,encrypttime,decrypttime,cpu,memory,algotype):
+     print(algotype," Memory usage: ", memory)
+     print(algotype," CPU usage: ", cpu)
+     print(algotype," Encryption time: ", encrypttime)
+     print(algotype," Decryption time: ", decrypttime)
+     print("------------------------------------------------")
 
+# The __name__ identifier is bound to the name of any module as it's being imported.
+# However, when a file is being executed then __name__ is set to "__main__" (the literal string: __main__).
+# This is used to separate the portion of code which should be executed from the portions of code which define functionality.
 
-def main():
-    # UserInput call
-    UserInput()
-
-# main call
-main()
+if __name__ == '__main__':
+ Algorithms().UserInput()
